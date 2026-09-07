@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: tonmoyhasanmrj/sidratfashionhouse
+  repo: tonmoyhasanmrj/sidrat-fashion-house
   branch: main
   base_url: https://sidratfashionhouse.pages.dev
   auth_endpoint: api/auth
