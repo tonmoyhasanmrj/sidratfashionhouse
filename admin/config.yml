@@ -1,8 +1,8 @@
 backend:
   name: github
-  repo: tonmoyhasanmrj/sidrat-fashion-house
+  repo: tonmoyhasanmrj/sidratfashionhouse
   branch: main
-  base_url: https://sidrat-fashion-house.pages.dev
+  base_url: https://sidratfashionhouse.pages.dev
   auth_endpoint: api/auth
 
 media_folder: "images/uploads"
