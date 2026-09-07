@@ -1,0 +1,72 @@
+backend:
+  name: github
+  repo: tonmoyhasanmrj/sidrat-fashion-house
+  branch: main
+  base_url: https://sidrat-fashion-house.pages.dev
+  auth_endpoint: api/auth
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: dafzhy8k
+    api_key: "584976883491438"
+
+locale: "en"
+
+collections:
+  - name: "products"
+    label: "প্রোডাক্ট তালিকা"
+    files:
+      - file: "content/products.json"
+        label: "সব প্রোডাক্ট"
+        name: "products"
+        fields:
+          - label: "প্রোডাক্টসমূহ"
+            name: "products"
+            widget: "list"
+            summary: "{{fields.name}} — ৳{{fields.price}}"
+            fields:
+              - {label: "ID (ইউনিক নাম্বার)", name: "id", widget: "number", value_type: "int", hint: "প্রতিটা প্রোডাক্টের জন্য আলাদা নাম্বার দিন, যেমন 13, 14..."}
+              - {label: "প্রোডাক্টের নাম", name: "name", widget: "string"}
+              - label: "ক্যাটাগরি"
+                name: "cat"
+                widget: "select"
+                options: ["শাড়ি", "থ্রি-পিস", "কুর্তি", "ওড়না", "এক্সেসরিজ"]
+              - {label: "দাম (৳)", name: "price", widget: "number", value_type: "int"}
+              - {label: "আগের দাম (ঐচ্ছিক, ডিসকাউন্ট দেখানোর জন্য)", name: "oldPrice", widget: "number", value_type: "int", required: false}
+              - label: "সাইজ (একাধিক সিলেক্ট করা যাবে)"
+                name: "sizes"
+                widget: "select"
+                multiple: true
+                options: ["ফ্রি সাইজ", "S", "M", "L", "XL"]
+                default: ["ফ্রি সাইজ"]
+              - {label: "ছবি", name: "img", widget: "image", required: false, hint: "ছবি না দিলে সুন্দর ডিজাইনার প্লেসহোল্ডার দেখাবে"}
+              - {label: "বিবরণ", name: "desc", widget: "text"}
+              - {label: "\"নতুন\" ব্যাজ দেখাবে?", name: "isNew", widget: "boolean", default: false}
+              - {label: "ফ্ল্যাশ সেলে দেখাবে?", name: "flashSale", widget: "boolean", default: false, hint: "চালু করলে এই প্রোডাক্টটা হোমপেজের ফ্ল্যাশ সেল সেকশনে দেখাবে (নিচে সেটিংসে ফ্ল্যাশ সেল শেষ হওয়ার সময় বসাতে হবে)"}
+
+  - name: "settings"
+    label: "সেটিংস"
+    files:
+      - file: "content/settings.json"
+        label: "যোগাযোগ ও পেমেন্ট সেটিংস"
+        name: "settings"
+        fields:
+          - {label: "হোমপেজের হিরো ছবি", name: "heroImage", widget: "image", required: false, hint: "ছবি না দিলে ডিফল্ট ডিজাইন (খিলান-আকৃতির নকশা) দেখাবে"}
+          - {label: "হিরো সেকশনের উপরের ছোট লেখা", name: "heroEyebrow", widget: "string", required: false, hint: "যেমন: নারায়ণগঞ্জ থেকে সারা বাংলাদেশে"}
+          - {label: "হিরো সেকশনের মূল শিরোনাম", name: "heroTitle", widget: "string", required: false}
+          - {label: "হিরো সেকশনের সাবটাইটেল", name: "heroSubtitle", widget: "text", required: false}
+          - {label: "হিরো সেকশনের বাটনের লেখা", name: "heroCtaText", widget: "string", required: false, hint: "যেমন: কালেকশন দেখুন"}
+          - {label: "ফুটারের ট্যাগলাইন", name: "footerTagline", widget: "text", required: false}
+          - {label: "ফ্ল্যাশ সেল সেকশনের শিরোনাম", name: "flashSaleTitle", widget: "string", required: false, hint: "যেমন: ⚡ ফ্ল্যাশ সেল"}
+          - {label: "ফ্ল্যাশ সেল কখন শেষ হবে", name: "flashSaleEndsAt", widget: "datetime", required: false, hint: "এই সময় পার হয়ে গেলে ফ্ল্যাশ সেল সেকশন সাইট থেকে নিজে থেকেই লুকিয়ে যাবে। খালি রাখলে ফ্ল্যাশ সেল সেকশন দেখাবে না।"}
+          - {label: "WhatsApp নম্বর", name: "whatsappNumber", widget: "string", hint: "দেশের কোডসহ, + বা স্পেস ছাড়া — যেমন 8801XXXXXXXXX"}
+          - {label: "Telegram ইউজারনেম", name: "telegramUsername", widget: "string", hint: "@ চিহ্ন ছাড়া লিখুন"}
+          - {label: "bKash নম্বর", name: "bkashNumber", widget: "string"}
+          - {label: "Nagad নম্বর", name: "nagadNumber", widget: "string"}
+          - {label: "যোগাযোগের ফোন নম্বর (ফুটারে দেখাবে)", name: "contactPhone", widget: "string"}
+          - {label: "ইমেইল ঠিকানা", name: "contactEmail", widget: "string"}
+          - {label: "ঠিকানা", name: "contactAddress", widget: "string"}
